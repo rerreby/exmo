@@ -33,8 +33,14 @@ const timeout = 3000;
 */
 function log(message) {
 	let dt = (new Date()).toLocaleString();
-	//logger.log(dt, message);
-	console.log(dt, message);
+	
+	/*
+		TODO Add check if setting is exists
+	*/
+	if (config.debug)
+		console.log(dt, message);
+	else
+		logger.log(dt, message);
 }
 
 
