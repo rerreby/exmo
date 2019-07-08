@@ -25,6 +25,7 @@ const currentPair	= currency1 + "_" + currency2;	// Удобное сокращ�
 
 const timeout = 3000;
 
+/* verson 2 */
 
 /*
 	Функция заглушка
