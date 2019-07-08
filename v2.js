@@ -1,5 +1,6 @@
 /* Подключаемые библиотеки */
 const exmo				= require("./exmo");
+const config				= require('./config');
 const _					= require("underscore");
 const clc					= require("cli-color");
 const { Console }			= require("console");
@@ -14,12 +15,12 @@ const output				= fs.createWriteStream('./v2.log', { flag: 'a'});
 const logger				= new Console({ stdout: output });
 
 /* Данные для работы функции trade() */
-const currency1			= 'ZEC';				// Основая
-const currency2			= 'RUB';				// торговая пара
-const fee					= 0.002;				// Комиссия биржи - 0,2%
-const profit				= 0.005;				// Наш профит - 0.5% от каждой продажи
-const resale				= 0.005;				// 0.5% надбавка, чтобы не торговать себе в убыток
-const currency1MinQuantity 	= 0.001;				// Мин. кол. единиц для совершения сделки 
+const currency1			= config.cur1;				// Основая
+const currency2			= config.cur2;				// торговая пара
+const fee					= config.fee;				// Комиссия биржи - 0,2%
+const profit				= config.profit;				// Наш профит - 0.5% от каждой продажи
+const resale				= config.resale;				// 0.5% надбавка, чтобы не торговать себе в убыток
+const currency1MinQuantity 	= config.minquan;				// Мин. кол. единиц для совершения сделки 
 const currentPair	= currency1 + "_" + currency2;	// Удобное сокращение для валютной пары
 
 const timeout = 3000;
@@ -32,7 +33,8 @@ const timeout = 3000;
 */
 function log(message) {
 	let dt = (new Date()).toLocaleString();
-	logger.log(dt, message);
+	//logger.log(dt, message);
+	console.log(dt, message);
 }
 
 
